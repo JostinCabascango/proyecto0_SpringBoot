@@ -3,6 +3,7 @@ package com.example.crudspring.repository;
 import com.example.crudspring.bean.Libro;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class BaseDatos {
     ArrayList<Libro> libros = new ArrayList<Libro>();
@@ -41,5 +42,16 @@ public class BaseDatos {
 
     public void insertar(Libro libro) {
         libros.add(libro);
+    }
+
+    public void borrar(int id) {
+        Iterator<Libro> iterator = libros.iterator();
+        while (iterator.hasNext()) {
+            Libro libro = iterator.next();
+            if (libro.getId() == id) {
+                iterator.remove();
+                break;
+            }
+        }
     }
 }
