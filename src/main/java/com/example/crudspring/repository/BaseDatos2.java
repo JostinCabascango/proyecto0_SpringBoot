@@ -4,6 +4,7 @@ import com.example.crudspring.bean.Libro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BaseDatos2 {
@@ -67,6 +68,26 @@ public class BaseDatos2 {
             System.out.println("Error al modificar el libro por ID: " + ex.getMessage());
         }
 
+    }
+
+    // Devuelve un libro de la base de datos
+    public Libro getLibro(int id) {
+        String query = "SELECT * FROM libros WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);
+            // Establece el id del libro en la consulta
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Si existe un libro con el id indicado, lo devuelve
+            if (resultSet.next()) {
+                // Crea un objeto libro con los datos obtenidos de la base de datos
+                Libro libro = new Libro(resultSet.getInt("id"), resultSet.getString("titulo"), resultSet.getString("autor"), resultSet.getString("editorial"), resultSet.getString("fecha"), resultSet.getString("tematica"));
+                return libro;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el libro por ID: " + ex.getMessage());
+        }
+        return null;
     }
 
 }
