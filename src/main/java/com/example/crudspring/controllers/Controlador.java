@@ -23,6 +23,7 @@ public class Controlador {
     @PostMapping("/")
     public String login(Usuario usuario, Model model) {
         if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
+            model.addAttribute("usuario", usuario);
             return "consulta";
         } else {
             model.addAttribute("error", "Credenciales incorrectas. Por favor, inténtalo de nuevo.");
