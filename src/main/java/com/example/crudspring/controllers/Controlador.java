@@ -16,6 +16,7 @@ import java.util.ArrayList;
 @RequestMapping("") // Anotación que indica que este controlador responde a la raíz del servidor
 public class Controlador {
     BaseDatos bd = new BaseDatos();
+    Usuario usuario;
 
     @GetMapping("/")
     // Responde a la petición GET de la raíz del servidor y devuelve la vista login (login.html)
@@ -31,6 +32,7 @@ public class Controlador {
         if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
             ArrayList<Libro> libros = bd.getLibros();
             model.addAttribute("usuario", usuario);  // Añade el atributo usuario a la vista consulta.html
+            this.usuario = usuario; // Guarda el usuario en el atributo usuario de la clase Controlador
             model.addAttribute("libros", libros); // Añade el atributo libros a la vista consulta.html
             return "consulta";
         } else {
@@ -38,4 +40,15 @@ public class Controlador {
             return "login";
         }
     }
+
+    // Responde a la petición POST de la ruta /insertar y devuelve la vista consulta (consulta.html)
+    @PostMapping("/insertar")
+    public String insertar(Libro libro, Model model) {
+        bd.insertar(libro);
+        ArrayList<Libro> libros = bd.getLibros();
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("libros", libros);
+        return "consulta";
+    }
+
 }
