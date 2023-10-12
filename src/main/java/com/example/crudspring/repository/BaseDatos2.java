@@ -51,4 +51,22 @@ public class BaseDatos2 {
 
     }
 
+    // Modifica un libro de la base de datos
+    public void modificar(Libro libro) {
+        String query = "UPDATE libros SET titulo = ?, autor = ?, editorial = ?, fecha = ?, tematica = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);
+            preparedStatement.setString(1, libro.getTitulo());
+            preparedStatement.setString(2, libro.getAutor());
+            preparedStatement.setString(3, libro.getEditorial());
+            preparedStatement.setString(4, libro.getFecha());
+            preparedStatement.setString(5, libro.getTematica());
+            preparedStatement.setInt(6, libro.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error al modificar el libro por ID: " + ex.getMessage());
+        }
+
+    }
+
 }
