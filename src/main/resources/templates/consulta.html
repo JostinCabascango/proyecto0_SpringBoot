@@ -8,6 +8,33 @@
 <h3>Usuario: <span th:text="${usuario.nombre}"></span></h3>
 <h3>Password: <span th:text="${usuario.password}"></span></h3>
 <h1>LISTADO DE LIBROS</h1>
+<!--Tabla de libros-->
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>TITULO</th>
+        <th>AUTOR</th>
+        <th>EDITORIAL</th>
+        <th>FECHA DE PUBLICACION</th>
+        <th>TEMATICA</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${libros.empty}">
+        <td colspan="6">No hay libros</td>
+    </tr>
+    <tr th:each="libro : ${libros}">
+        <td th:text="${libro.id}"></td>
+        <td th:text="${libro.titulo}"></td>
+        <td th:text="${libro.autor}"></td>
+        <td th:text="${libro.editorial}"></td>
+        <td th:text="${libro.fecha}"></td>
+        <td th:text="${libro.tematica}"></td>
+    </tr>
+    </tbody>
+
+</table>
 
 </body>
 </html>
