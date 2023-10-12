@@ -16,6 +16,9 @@
     <input type="submit" value="Login">
 
 </form>
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
 
 </body>
 </html>
