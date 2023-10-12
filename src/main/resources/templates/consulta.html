@@ -18,6 +18,7 @@
         <th>EDITORIAL</th>
         <th>FECHA DE PUBLICACION</th>
         <th>TEMATICA</th>
+        <th>BORRADO</th>
     </tr>
     </thead>
     <tbody>
@@ -31,6 +32,7 @@
         <td th:text="${libro.editorial}"></td>
         <td th:text="${libro.fecha}"></td>
         <td th:text="${libro.tematica}"></td>
+        <td><a th:href="@{/bo}">Borrar</a></td>
     </tr>
     </tbody>
 
