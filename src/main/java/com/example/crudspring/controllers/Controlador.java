@@ -1,6 +1,7 @@
 package com.example.crudspring.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Controlador {
     @GetMapping("/")
     // Responde a la petición GET de la raíz del servidor y devuelve la vista login (login.html)
-    public String iniciar() {
+    public String iniciar(Model model) {
+        // Model es un objeto que permite pasar datos a la vista
+        model.addAttribute("titulo", "FORMULARIO DE ACCESO"); // Añade el atributo titulo a la vista login.html
         return "login";
     }
 
