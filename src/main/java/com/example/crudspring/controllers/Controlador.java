@@ -5,10 +5,7 @@ import com.example.crudspring.bean.Usuario;
 import com.example.crudspring.repository.BaseDatos;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -48,7 +45,22 @@ public class Controlador {
         ArrayList<Libro> libros = bd.getLibros();
         model.addAttribute("usuario", this.usuario);
         model.addAttribute("libros", libros);
+        model.addAttribute("boton", "insertar");
+        model.addAttribute("action", "/insertar");
+        model.addAttribute("libro", null);
         return "consulta";
     }
+
+    @GetMapping("/borrado/{id}")
+    public String borrar(@PathVariable int id, Model model) {
+        bd.borrar(id);
+        ArrayList<Libro> libros = bd.getLibros();
+        model.addAttribute("usuario", this.usuario);
+        model.addAttribute("libros", libros);
+        model.addAttribute("boton", "insertar");
+        model.addAttribute("action", "/insertar");
+        return "consulta";
+    }
+
 
 }

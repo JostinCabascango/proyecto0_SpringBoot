@@ -32,7 +32,7 @@
         <td th:text="${libro.editorial}"></td>
         <td th:text="${libro.fecha}"></td>
         <td th:text="${libro.tematica}"></td>
-        <td><a th:href="@{/bo}">Borrar</a></td>
+        <td><a th:href="@{/borrado/}+${libro.id}">Borrar</a></td>
     </tr>
     </tbody>
 
