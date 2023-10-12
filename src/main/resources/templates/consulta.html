@@ -5,8 +5,9 @@
     <title>LISTADO DE LIBROS</title>
 </head>
 <body>
-<h3>Usuario: <span th:text="${usuario.nombre}"></span></h3>
-<h3>Password: <span th:text="${usuario.password}"></span></h3>
+<h3>Usuario: <span th:if="${usuario != null}" th:text="${usuario.nombre}"></span></h3>
+<h3>Password: <span th:if="${usuario != null}" th:text="${usuario.password}"></span></h3>
+
 <h1>LISTADO DE LIBROS</h1>
 <!--Tabla de libros-->
 <table border="1">
