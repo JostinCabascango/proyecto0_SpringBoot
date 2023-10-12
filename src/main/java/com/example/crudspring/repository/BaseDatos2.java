@@ -109,4 +109,23 @@ public class BaseDatos2 {
         return libros;
     }
 
+    //Comprueba si existe un usuario con el nombre y la contraseña indicados en la base de datos
+    public boolean existeUsuario(String nombre, String password) {
+        String query = "SELECT * FROM usuarios WHERE usuario = ? AND password = ?";
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            //Si existe un usuario con el nombre y la contraseña indicados, devuelve true
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener el usuario: " + ex.getMessage());
+        }
+        //Si no existe un usuario con el nombre y la contraseña indicados, devuelve false
+        return false;
+    }
+
 }
