@@ -1,4 +1,3 @@
--- Inserción de datos en la tabla 'libros' si no existen
 INSERT INTO libros (titulo, autor, editorial, fecha, tematica) VALUES
                                                                    ('El Quijote', 'Cervantes', 'Anaya', '1605-01-01', 'Novela'),
                                                                    ('El Señor de los Anillos', 'Tolkien', 'Minotauro', '1954-01-01', 'Fantasía'),
@@ -20,9 +19,7 @@ INSERT INTO libros (titulo, autor, editorial, fecha, tematica) VALUES
                                                                    ('Cien años de soledad', 'Gabriel García Márquez', 'Sudamericana', '1967-01-01', 'Novela'),
                                                                    ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Bloomsbury', '1997-01-01', 'Fantasía');
 
-
--- Inserción de datos de ejemplo en la tabla 'usuarios'
 INSERT INTO usuarios (usuario, password) VALUES
                                              ('admin', '456'),
-                                             ('itic', 'itic');
-('edu','edu');
+                                             ('itic', 'itic'),
+                                             ('edu', 'edu');
