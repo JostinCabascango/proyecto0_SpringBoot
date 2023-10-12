@@ -1,4 +1,7 @@
 package com.example.crudspring.repository;
 
-public interface BaseDatos3 extends org.springframework.data.jpa.repository.JpaRepository<com.example.crudspring.bean.Libro, java.lang.Integer> {
+import com.example.crudspring.bean.Libro;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BaseDatos3 extends JpaRepository<Libro, Integer> {
 }
