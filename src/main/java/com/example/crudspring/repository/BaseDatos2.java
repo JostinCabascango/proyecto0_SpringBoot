@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BaseDatos2 {
     private Connection conexion;
@@ -88,6 +89,24 @@ public class BaseDatos2 {
             System.out.println("Error al obtener el libro por ID: " + ex.getMessage());
         }
         return null;
+    }
+
+    //Devuelve todos los libros de la base de datos
+    public ArrayList<Libro> getLibros() {
+        ArrayList<Libro> libros = new ArrayList<>();
+        String query = "SELECT * FROM libros";
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            //Itera sobre los resultados obtenidos de la base de datos y los añade al ArrayList
+            while (resultSet.next()) {
+                Libro libro = new Libro(resultSet.getInt("id"), resultSet.getString("titulo"), resultSet.getString("autor"), resultSet.getString("editorial"), resultSet.getString("fecha"), resultSet.getString("tematica"));
+                libros.add(libro);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los libros: " + ex.getMessage());
+        }
+        return libros;
     }
 
 }
