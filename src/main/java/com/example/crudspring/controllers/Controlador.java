@@ -23,7 +23,7 @@ public class Controlador {
     public String login(Model model, @RequestParam String nombre, @RequestParam String password) {
         // @RequestParam es una anotación que indica que el parámetro se pasa por la URL
         // Tiene que coincidir el nombre del parámetro con el nombre del campo del formulario de la vista
-        if (nombre.equals("edu") && password.equals("1234")) {
+        if (nombre.equals("edu") && password.equals("edu")) {
             return "consulta";
         } else {
             return "login";
