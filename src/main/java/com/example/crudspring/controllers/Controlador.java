@@ -1,5 +1,6 @@
 package com.example.crudspring.controllers;
 
+import com.example.crudspring.bean.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +21,11 @@ public class Controlador {
 
     // Responde a la petición POST de la raíz del servidor y devuelve la vista consulta (consulta.html)
     @PostMapping("/")
-    public String login(Model model, @RequestParam String nombre, @RequestParam String password) {
-        // @RequestParam es una anotación que indica que el parámetro se pasa por la URL
-        // Tiene que coincidir el nombre del parámetro con el nombre del campo del formulario de la vista
-        if (nombre.equals("edu") && password.equals("edu")) {
+    public String login(Usuario usuario, Model model) {
+        if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
             return "consulta";
         } else {
+            model.addAttribute("error", "Credenciales incorrectas. Por favor, inténtalo de nuevo.");
             return "login";
         }
     }
