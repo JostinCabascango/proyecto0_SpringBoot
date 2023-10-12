@@ -20,6 +20,7 @@ public class BaseDatos2 {
         }
     }
 
+    // Inserta un libro en la base de datos
     public void insertar(Libro libro) {
         // INSERT INTO libros (id,titulo, autor, editorial, fecha, tematica) VALUES (1, "El Quijote", "Cervantes", "Anaya", "1605", "Novela");
         String query = "INSERT INTO libros (id,titulo, autor, editorial, fecha, tematica) VALUES (?, ?, ?, ?, ?, ?)";
@@ -36,4 +37,18 @@ public class BaseDatos2 {
             System.out.println(ex.getMessage());
         }
     }
+
+    // Borra un libro de la base de datos
+    public void borrar(int id) {
+        String query = "DELETE FROM libros WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar el libro por ID: " + ex.getMessage());
+        }
+
+    }
+
 }
