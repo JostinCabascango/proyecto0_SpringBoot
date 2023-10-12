@@ -38,4 +38,8 @@ public class BaseDatos {
     public void setLibros(ArrayList<Libro> libros) {
         this.libros = libros;
     }
+
+    public void insertar(Libro libro) {
+        libros.add(libro);
+    }
 }
