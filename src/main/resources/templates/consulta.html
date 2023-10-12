@@ -19,6 +19,7 @@
         <th>FECHA DE PUBLICACION</th>
         <th>TEMATICA</th>
         <th>BORRADO</th>
+        <th>MODIFICAR</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
         <td th:text="${libro.fecha}"></td>
         <td th:text="${libro.tematica}"></td>
         <td><a th:href="@{/borrado/}+${libro.id}">Borrar</a></td>
+        <td><a th:href="@{/modificar/}+${libro.id}">Modificar</a></td>
     </tr>
     </tbody>
 
