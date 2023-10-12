@@ -27,7 +27,8 @@ public class Controlador {
     // Responde a la petición POST de la raíz del servidor y devuelve la vista consulta (consulta.html)
     @PostMapping("/")
     public String login(Usuario usuario, Model model) {
-        if (usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
+        // Comprueba que el usuario y la contraseña sean correctos (edu/edu) y si lo son, devuelve la vista consulta (consulta.html)
+        if (usuario.getNombre() != null && usuario.getPassword() != null && usuario.getNombre().equals("edu") && usuario.getPassword().equals("edu")) {
             ArrayList<Libro> libros = bd.getLibros();
             model.addAttribute("usuario", usuario);  // Añade el atributo usuario a la vista consulta.html
             this.usuario = usuario; // Guarda el usuario en el atributo usuario de la clase Controlador
