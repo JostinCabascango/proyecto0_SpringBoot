@@ -4,6 +4,8 @@ import com.example.crudspring.bean.Libro;
 import com.example.crudspring.bean.Usuario;
 import com.example.crudspring.repository.BaseDatos;
 import com.example.crudspring.repository.BaseDatos2;
+import com.example.crudspring.repository.BaseDatos3;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,10 @@ import java.util.ArrayList;
 @RequestMapping("") // Anotación que indica que este controlador responde a la raíz del servidor
 public class Controlador {
     //BaseDatos bd = new BaseDatos();
-    BaseDatos2 bd = new BaseDatos2();
+    //BaseDatos2 bd = new BaseDatos2();
+    // Inyecta la dependencia de BaseDatos3 en el controlador
+    @Autowired
+    BaseDatos3 bd;
     Usuario usuario;
 
     @GetMapping("/")
