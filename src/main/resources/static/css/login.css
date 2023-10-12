@@ -1,0 +1,56 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilos para el título h1 */
+h1 {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos para el formulario */
+form {
+    width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilos para el mensaje de error */
+.error-message {
+    color: #f00;
+    font-weight: bold;
+}
