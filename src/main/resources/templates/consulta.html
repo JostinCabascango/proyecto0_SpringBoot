@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>LISTADO DE LIBROS</title>
-    <!--Link CSS-->
-    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 <body>
 <h3>Usuario: <span th:if="${usuario != null}" th:text="${usuario.nombre}"></span></h3>
@@ -27,7 +25,7 @@
     </thead>
     <tbody>
     <tr th:if="${libros.empty}">
-        <td colspan="6">No hay libros</td>
+        <td colspan="8">No hay libros</td>
     </tr>
     <tr th:each="libro : ${libros}">
         <td th:text="${libro.id}"></td>
@@ -36,45 +34,40 @@
         <td th:text="${libro.editorial}"></td>
         <td th:text="${libro.fecha}"></td>
         <td th:text="${libro.tematica}"></td>
-        <td><a th:href="@{/borrado/}+${libro.id}">Borrar</a></td>
-        <td><a th:href="@{/modificar/}+${libro.id}">Modificar</a></td>
+        <td><a th:href="@{'/borrado/' + ${libro.id}}">Borrar</a></td>
+        <td><a th:href="@{'/modificar/' + ${libro.id}}">Modificar</a></td>
     </tr>
     </tbody>
-
 </table>
 <!--Fin tabla de libros-->
 <!--Formulario -->
-<form th:action="${action}" method="post">
+<form th:action="${action}" method="post" th:object="${libro}">
     <div>
         <label>Id</label>
-        <input type="number" name="id" placeholder="Id" th:value="${libro?.id}">
+        <input type="number" name="id" placeholder="Id" th:field="*{id}">
     </div>
     <div>
         <label>Titulo</label>
-        <input type="text" name="titulo" placeholder="Titulo" th:value="${libro?.titulo}">
+        <input type="text" name="titulo" placeholder="Titulo" th:field="*{titulo}">
     </div>
     <div>
         <label>Autor</label>
-        <input type="text" name="autor" placeholder="Autor" th:value="${libro?.autor}">
+        <input type="text" name="autor" placeholder="Autor" th:field="*{autor}">
     </div>
     <div>
         <label>Editorial</label>
-        <input type="text" name="editorial" placeholder="Editorial" th:value="${libro?.editorial}">
+        <input type="text" name="editorial" placeholder="Editorial" th:field="*{editorial}">
     </div>
     <div>
         <label>Fecha de publicacion</label>
-        <input type="text" name="fecha" placeholder="Fecha de publicacion" th:value="${libro?.fecha}">
+        <input type="text" name="fecha" placeholder="Fecha de publicacion" th:field="*{fecha}">
     </div>
     <div>
         <label>Tematica</label>
-        <input type="text" name="tematica" placeholder="Tematica" th:value="${libro?.tematica}">
+        <input type="text" name="tematica" placeholder="Tematica" th:field="*{tematica}">
     </div>
     <div>
-        <input type="submit" name="submit" th:value="${boton}">
+        <input type="submit" th:value="${boton}">
     </div>
-
 </form>
 
-
-</body>
-</html>

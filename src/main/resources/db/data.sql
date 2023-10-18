@@ -1,6 +1,6 @@
 -- Inserciones en la tabla 'libros'
 DELETE FROM libros;
-INSERT IGNORE INTO libros (titulo, autor, editorial, fecha, tematica) VALUES
+INSERT  INTO libros (titulo, autor, editorial, fecha, tematica) VALUES
 ('El Quijote', 'Cervantes', 'Anaya', '1605-01-01', 'Novela'),
 ('El Señor de los Anillos', 'Tolkien', 'Minotauro', '1954-01-01', 'Fantasía'),
 ('El Principito', 'Saint-Exupéry', 'Salamandra', '1943-01-01', 'Infantil'),
@@ -20,9 +20,9 @@ INSERT IGNORE INTO libros (titulo, autor, editorial, fecha, tematica) VALUES
 ('Ulises', 'James Joyce', 'Sylvia Beach', '1922-01-01', 'Novela'),
 ('Cien años de soledad', 'Gabriel García Márquez', 'Sudamericana', '1967-01-01', 'Novela'),
 ('Harry Potter y la piedra filosofal', 'J.K. Rowling', 'Bloomsbury', '1997-01-01', 'Fantasía');
-DELETE FROM usuarios;
 -- Inserciones en la tabla 'usuarios'
-INSERT IGNORE INTO usuarios (usuario, password) VALUES
+DELETE FROM usuarios;
+INSERT INTO usuarios (usuario, password) VALUES
 ('admin', '456'),
 ('itic', 'itic'),
 ('edu', 'edu');

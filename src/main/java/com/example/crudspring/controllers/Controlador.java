@@ -28,6 +28,7 @@ public class Controlador {
     public String procesarAcceso(Usuario usuario, Model model) {
         if (sonCredencialesValidas(usuario)) {
             cargarLibros(model, usuario);
+            model.addAttribute("libro", new Libro()); // Agregar un objeto Libro al modelo
             return "consulta";
         } else {
             model.addAttribute("error", "Credenciales incorrectas. Por favor, inténtalo de nuevo.");
@@ -75,7 +76,7 @@ public class Controlador {
         model.addAttribute("libros", libros);
         model.addAttribute("boton", "insertar");
         model.addAttribute("action", "/insertar");
-        model.addAttribute("libro", null);
+        model.addAttribute("libro", new Libro()); // Agregar un objeto Libro al modelo
         return "consulta";
     }
 }
